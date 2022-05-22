@@ -1,0 +1,10 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "pguser",
+    "password": "pgpassword",
+    "database": "manage_content",
+    "entities": ["dist/**/*.entity{.ts,.js}"],
+    "synchronize": true
+}
