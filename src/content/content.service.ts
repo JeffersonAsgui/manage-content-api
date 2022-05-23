@@ -9,7 +9,7 @@ import { UpdateContentInput } from './dto/update-content.input';
 export class ContentService {
     constructor(
         @InjectRepository(Content)
-        private contentRepository: Repository<Content>
+        private contentRepository: Repository<Content>,
     ) { }
 
 
@@ -52,12 +52,6 @@ export class ContentService {
         const content = await this.findContentById(id);
         const deletedContent = await this.contentRepository.delete(content);
         return deletedContent ? true : false;
-    }
-
-
-    private validateContentType(typeContent: string): boolean {
-
-        return true;
     }
 
 }

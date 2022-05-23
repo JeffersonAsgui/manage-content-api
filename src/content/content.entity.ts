@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from "@nestjs/graphql"
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { type } from "os";
+import { ContentDetail } from "src/content-detail/content-detail.entity";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @ObjectType()
 @Entity()
@@ -18,7 +20,8 @@ export class Content {
     @Column()
     type: string;
 
-    @Column()
-    detail: string;
+    @OneToOne(type => ContentDetail, content => Content)
+    @JoinColumn({ name: "detail_id" })
+    detail: ContentDetail;
 
 }

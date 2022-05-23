@@ -2,30 +2,54 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type ContentDetail {
+  id: ID!
+  detailDescription: String!
+  content: Content!
+}
+
 type Content {
   id: ID!
   name: String!
   description: String!
   type: String!
-  detail: String!
+  detail: ContentDetail!
+}
+
+type View {
+  """Example field (placeholder)"""
+  exampleField: Int!
 }
 
 type Query {
   contents: [Content!]!
   content(id: String!): Content!
+  contentDetail(id: String!): ContentDetail!
+  views: [View!]!
+  view(id: Int!): View!
 }
 
 type Mutation {
   createContent(data: CreateContentInput!): Content!
   updateContent(id: String!, data: UpdateContentInput!): Content!
   deleteContent(id: String!): Boolean!
+  createDetail(data: CreateContentDetailInput!): ContentDetail!
+  updateDetail(id: String!, data: UpdateContentDetailInput!): ContentDetail!
+  deleteDetail(id: String!): Boolean!
+  createView(createViewInput: CreateViewInput!): View!
+  updateView(updateViewInput: UpdateViewInput!): View!
+  removeView(id: Int!): View!
 }
 
 input CreateContentInput {
+  detail: CreateContentDetailInput
   name: String!
   description: String!
   type: ContentType!
-  detail: String!
+}
+
+input CreateContentDetailInput {
+  detailDescription: String!
 }
 
 enum ContentType {
@@ -38,5 +62,20 @@ input UpdateContentInput {
   name: String
   description: String
   type: ContentType
-  detail: String
+  detail: CreateContentDetailInput
+}
+
+input UpdateContentDetailInput {
+  detailDescription: String!
+}
+
+input CreateViewInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateViewInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
 }
