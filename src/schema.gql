@@ -1,0 +1,36 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Content {
+  id: ID!
+  name: String!
+  description: String!
+  type: String!
+  detail: String!
+}
+
+type Query {
+  contents: [Content!]!
+  content(id: String!): Content!
+}
+
+type Mutation {
+  createContent(data: CreateContentInput!): Content!
+  updateContent(id: String!, data: UpdateContentInput!): Content!
+  deleteContent(id: String!): Boolean!
+}
+
+input CreateContentInput {
+  name: String!
+  description: String!
+  type: String!
+  detail: String!
+}
+
+input UpdateContentInput {
+  name: String
+  description: String
+  type: String
+  detail: String
+}
