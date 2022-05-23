@@ -55,5 +55,9 @@ export class ContentService {
     }
 
 
+    private validateContentType(typeContent: string): boolean {
+
+        return true;
+    }
 
 }

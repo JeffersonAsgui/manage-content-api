@@ -24,13 +24,19 @@ type Mutation {
 input CreateContentInput {
   name: String!
   description: String!
-  type: String!
+  type: ContentType!
   detail: String!
+}
+
+enum ContentType {
+  VIDEO
+  PDF
+  IMAGE
 }
 
 input UpdateContentInput {
   name: String
   description: String
-  type: String
+  type: ContentType
   detail: String
 }

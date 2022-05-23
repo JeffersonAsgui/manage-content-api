@@ -1,5 +1,6 @@
 import { Field, InputType } from "@nestjs/graphql";
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsEnum, IsNotEmpty, IsString } from "class-validator";
+import { ContentType } from "../content-type.enum";
 
 @InputType()
 export class CreateContentInput {
@@ -15,7 +16,8 @@ export class CreateContentInput {
 
     @IsString()
     @IsNotEmpty({ message: "Type field cannot be empty" })
-    type: string;
+    @IsEnum(ContentType, { message: 'Content Type field no valid' })
+    type: ContentType;
 
     @IsString()
     detail: string;
