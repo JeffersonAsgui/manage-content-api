@@ -43,7 +43,5 @@ export class ContentDetailResolver {
         const deleted = await this.detailService.deleteDetail(id);
         return deleted;
     }
-
-
-
+    
 }
