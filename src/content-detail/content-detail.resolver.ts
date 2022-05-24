@@ -1,5 +1,5 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { ContentDetail } from './content-detail.entity';
+import { ContentDetail } from './entities/content-detail.entity';
 import { ContentDetailService } from './content-detail.service';
 import { CreateContentDetailInput } from './dto/create-content-detail.input';
 import { UpdateContentDetailInput } from './dto/update-content-detail.input';
@@ -43,5 +43,5 @@ export class ContentDetailResolver {
         const deleted = await this.detailService.deleteDetail(id);
         return deleted;
     }
-    
+
 }

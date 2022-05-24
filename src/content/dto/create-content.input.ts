@@ -1,8 +1,8 @@
 import { Field, InputType } from "@nestjs/graphql";
 import { IsEnum, IsNotEmpty, IsObject, IsOptional, IsString } from "class-validator";
-import { ContentDetail } from "src/content-detail/content-detail.entity";
+import { ContentDetail } from "src/content-detail/entities/content-detail.entity";
 import { CreateContentDetailInput } from "src/content-detail/dto/create-content-detail.input";
-import { ContentType } from "../content-type.enum";
+import { ContentType } from "../enum/content-type.enum";
 
 @InputType()
 export class CreateContentInput {

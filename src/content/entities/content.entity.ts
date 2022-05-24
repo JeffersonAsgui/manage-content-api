@@ -1,6 +1,6 @@
 import { Field, ID, ObjectType } from "@nestjs/graphql"
 import { type } from "os";
-import { ContentDetail } from "src/content-detail/content-detail.entity";
+import { ContentDetail } from "src/content-detail/entities/content-detail.entity";
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @ObjectType()

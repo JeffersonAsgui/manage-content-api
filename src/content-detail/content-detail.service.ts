@@ -1,7 +1,7 @@
 import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { ContentDetail } from './content-detail.entity';
+import { ContentDetail } from './entities/content-detail.entity';
 import { CreateContentDetailInput } from './dto/create-content-detail.input';
 import { UpdateContentDetailInput } from './dto/update-content-detail.input';
 
