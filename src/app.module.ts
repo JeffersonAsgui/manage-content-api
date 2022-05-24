@@ -7,7 +7,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ContentModule } from './content/content.module';
 import { ContentDetailModule } from './content-detail/content-detail.module';
-import { ViewsModule } from './views/views.module';
+import { ViewsModule } from './content-views/views.module';
 
 @Module({
   imports: [
