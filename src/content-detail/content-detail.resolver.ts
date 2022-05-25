@@ -3,35 +3,36 @@ import { ContentDetail } from './entities/content-detail.entity';
 import { ContentDetailService } from './content-detail.service';
 import { CreateContentDetailInput } from './dto/create-content-detail.input';
 import { UpdateContentDetailInput } from './dto/update-content-detail.input';
+import { ContentDetailDTO } from './dto/content-detail.dto';
 
-@Resolver()
+@Resolver(() => ContentDetailDTO)
 export class ContentDetailResolver {
 
     constructor(
         private detailService: ContentDetailService
     ) { }
 
-    @Query(() => ContentDetail)
+    @Query(() => ContentDetailDTO)
     async contentDetail(
         @Args('id') id: string
-    ): Promise<ContentDetail> {
+    ): Promise<ContentDetailDTO> {
         const detail = this.detailService.findDetailById(id);
         return detail;
     }
 
-    @Mutation(() => ContentDetail)
+    @Mutation(() => ContentDetailDTO)
     async createDetail(
         @Args('data') data: CreateContentDetailInput
-    ): Promise<ContentDetail> {
+    ): Promise<ContentDetailDTO> {
         const detail = await this.detailService.createDetail(data);
         return detail;
     }
 
-    @Mutation(() => ContentDetail)
+    @Mutation(() => ContentDetailDTO)
     async updateDetail(
         @Args('id') id: string,
         @Args('data') data: UpdateContentDetailInput,
-    ): Promise<ContentDetail> {
+    ): Promise<ContentDetailDTO> {
         const detail = this.detailService.updateDetail(id, data);
         return detail;
     }

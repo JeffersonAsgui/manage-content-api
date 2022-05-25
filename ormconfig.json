@@ -5,6 +5,6 @@
     "username": "pguser",
     "password": "pgpassword",
     "database": "manage_content",
-    "entities": ["dist/**/*.entity{.ts,.js}"],
+    "entities": ["dist/**/entities/*.entity{.ts,.js}"],
     "synchronize": true
 }

@@ -14,7 +14,9 @@ import { ViewsModule } from './content-views/views.module';
     TypeOrmModule.forRoot(),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
+      debug: false,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      sortSchema: true,
     }),
     ContentModule,
     ContentDetailModule,

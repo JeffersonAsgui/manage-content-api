@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { ContentDetail } from './entities/content-detail.entity';
 import { CreateContentDetailInput } from './dto/create-content-detail.input';
 import { UpdateContentDetailInput } from './dto/update-content-detail.input';
+import { ContentDetailDTO } from './dto/content-detail.dto';
 
 @Injectable()
 export class ContentDetailService {
@@ -13,7 +14,7 @@ export class ContentDetailService {
         private contentDetailRepository: Repository<ContentDetail>,
     ) { }
 
-    async findDetailById(id: string): Promise<ContentDetail> {
+    async findDetailById(id: string): Promise<ContentDetailDTO> {
         const detailContent = await this.contentDetailRepository.findOne(id);
         if (!detailContent) {
             throw new NotFoundException('Content Detail not found!');
@@ -21,7 +22,7 @@ export class ContentDetailService {
         return detailContent;
     }
 
-    async createDetail(data: CreateContentDetailInput): Promise<ContentDetail> {
+    async createDetail(data: CreateContentDetailInput): Promise<ContentDetailDTO> {
 
         const detail = this.contentDetailRepository.create(data);
         const detailSaved = await this.contentDetailRepository.save(detail);
@@ -34,7 +35,7 @@ export class ContentDetailService {
     }
 
 
-    async updateDetail(id: string, data: UpdateContentDetailInput): Promise<ContentDetail> {
+    async updateDetail(id: string, data: UpdateContentDetailInput): Promise<ContentDetailDTO> {
         const detail = await this.findDetailById(id);
 
         await this.contentDetailRepository.update(detail, { ...data });

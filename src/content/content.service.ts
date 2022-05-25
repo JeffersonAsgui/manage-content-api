@@ -4,21 +4,25 @@ import { Repository } from 'typeorm';
 import { Content } from './entities/content.entity';
 import { CreateContentInput } from './dto/create-content.input';
 import { UpdateContentInput } from './dto/update-content.input';
+import { ContentDTO } from './dto/content.dto';
+import { CreateContentDetailInput } from 'src/content-detail/dto/create-content-detail.input';
 
 @Injectable()
 export class ContentService {
     constructor(
         @InjectRepository(Content)
-        private contentRepository: Repository<Content>,
+        private contentRepository: Repository<Content>
     ) { }
 
 
-    async findAllContent(): Promise<Content[]> {
-        const content = await this.contentRepository.find();
+    async findAllContent(): Promise<ContentDTO[]> {
+        const content = await this.contentRepository.find({
+            relations: ["detail"]
+        });
         return content;
     }
 
-    async findContentById(id: string): Promise<Content> {
+    async findContentById(id: string): Promise<ContentDTO> {
         const content = await this.contentRepository.findOne(id);
         if (!content) {
             throw new NotFoundException('Content not found!');
@@ -26,9 +30,12 @@ export class ContentService {
         return content;
     }
 
-    async createContent(data: CreateContentInput): Promise<Content> {
+    async createContent(
+        data: CreateContentInput):
+        Promise<ContentDTO> {
 
         const content = this.contentRepository.create(data);
+
         const contentSaved = await this.contentRepository.save(content);
 
         if (!contentSaved) {
@@ -38,7 +45,7 @@ export class ContentService {
         return contentSaved;
     }
 
-    async updateContent(id: string, data: UpdateContentInput): Promise<Content> {
+    async updateContent(id: string, data: UpdateContentInput): Promise<ContentDTO> {
         const content = await this.findContentById(id);
 
         await this.contentRepository.update(content, { ...data });

@@ -2,71 +2,34 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Content {
+  description: String!
+  detailId: String!
+  id: ID!
+  name: String!
+  type: String!
+}
+
 type ContentDetail {
   id: ID!
-  detailDescription: String!
-  content: Content!
 }
 
-type Content {
-  id: ID!
-  name: String!
-  description: String!
-  type: String!
-  detail: ContentDetail!
-}
-
-type View {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
-type Query {
-  contents: [Content!]!
-  content(id: String!): Content!
-  contentDetail(id: String!): ContentDetail!
-  views: [View!]!
-  view(id: Int!): View!
-}
-
-type Mutation {
-  createContent(data: CreateContentInput!): Content!
-  updateContent(id: String!, data: UpdateContentInput!): Content!
-  deleteContent(id: String!): Boolean!
-  createDetail(data: CreateContentDetailInput!): ContentDetail!
-  updateDetail(id: String!, data: UpdateContentDetailInput!): ContentDetail!
-  deleteDetail(id: String!): Boolean!
-  createView(createViewInput: CreateViewInput!): View!
-  updateView(updateViewInput: UpdateViewInput!): View!
-  removeView(id: Int!): View!
-}
-
-input CreateContentInput {
-  detail: CreateContentDetailInput
-  name: String!
-  description: String!
-  type: ContentType!
+enum ContentType {
+  IMAGE
+  PDF
+  VIDEO
 }
 
 input CreateContentDetailInput {
   detailDescription: String!
 }
 
-enum ContentType {
-  VIDEO
-  PDF
-  IMAGE
-}
-
-input UpdateContentInput {
-  name: String
-  description: String
-  type: ContentType
+input CreateContentInput {
+  description: String!
   detail: CreateContentDetailInput
-}
-
-input UpdateContentDetailInput {
-  detailDescription: String!
+  detail_id: String
+  name: String!
+  type: ContentType!
 }
 
 input CreateViewInput {
@@ -74,8 +37,44 @@ input CreateViewInput {
   exampleField: Int!
 }
 
+type Mutation {
+  createContent(data: CreateContentInput!): Content!
+  createDetail(data: CreateContentDetailInput!): ContentDetail!
+  createView(createViewInput: CreateViewInput!): View!
+  deleteContent(id: String!): Boolean!
+  deleteDetail(id: String!): Boolean!
+  removeView(id: Int!): View!
+  updateContent(data: UpdateContentInput!, id: String!): Content!
+  updateDetail(data: UpdateContentDetailInput!, id: String!): ContentDetail!
+  updateView(updateViewInput: UpdateViewInput!): View!
+}
+
+type Query {
+  content(id: String!): Content!
+  contentDetail(id: String!): ContentDetail!
+  contents: [Content!]!
+  view(id: Int!): View!
+  views: [View!]!
+}
+
+input UpdateContentDetailInput {
+  detailDescription: String!
+}
+
+input UpdateContentInput {
+  description: String
+  detail: CreateContentDetailInput
+  name: String
+  type: ContentType
+}
+
 input UpdateViewInput {
   """Example field (placeholder)"""
   exampleField: Int
   id: Int!
+}
+
+type View {
+  """Example field (placeholder)"""
+  exampleField: Int!
 }

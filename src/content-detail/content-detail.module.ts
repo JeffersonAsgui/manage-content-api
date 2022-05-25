@@ -9,5 +9,6 @@ import { ContentDetailResolver } from './content-detail.resolver';
         TypeOrmModule.forFeature([ContentDetail])
     ],
     providers: [ContentDetailService, ContentDetailResolver],
+    exports: [ContentDetailService]
 })
 export class ContentDetailModule { }

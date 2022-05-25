@@ -3,11 +3,12 @@ import { ContentService } from './content.service';
 import { ContentResolver } from './content.resolver';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Content } from './entities/content.entity';
-import { CreateContentInput } from './dto/create-content.input';
+import { ContentDetailModule } from 'src/content-detail/content-detail.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Content])
+    TypeOrmModule.forFeature([Content]),
+    ContentDetailModule
   ],
   providers: [ContentService, ContentResolver]
 })
