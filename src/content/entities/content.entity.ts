@@ -5,7 +5,7 @@ import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "ty
 export class Content {
 
     @PrimaryGeneratedColumn()
-    id: string;
+    id: number;
 
     @Column()
     name: string;
@@ -16,10 +16,10 @@ export class Content {
     @Column()
     type: string;
 
-    @OneToOne(type => ContentDetail, content => content.id, { cascade: true, nullable: true })
-    detail?: ContentDetail;
+    @OneToOne(() => ContentDetail)
+    contentDetail?: ContentDetail;
 
-    @Column({ nullable: true })
-    detailId?: string;
+    @Column({ nullable: true, default: 0 })
+    contentDetailId?: number;
 
 }

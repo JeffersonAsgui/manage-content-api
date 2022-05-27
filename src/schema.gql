@@ -3,8 +3,8 @@
 # ------------------------------------------------------
 
 type Content {
+  contentDetailId: Float!
   description: String!
-  detailId: String!
   id: ID!
   name: String!
   type: String!
@@ -25,9 +25,9 @@ input CreateContentDetailInput {
 }
 
 input CreateContentInput {
+  contentDetail: CreateContentDetailInput
+  contentDetailId: Float
   description: String!
-  detail: CreateContentDetailInput
-  detail_id: String
   name: String!
   type: ContentType!
 }
@@ -41,29 +41,31 @@ type Mutation {
   createContent(data: CreateContentInput!): Content!
   createDetail(data: CreateContentDetailInput!): ContentDetail!
   createView(createViewInput: CreateViewInput!): View!
-  deleteContent(id: String!): Boolean!
-  deleteDetail(id: String!): Boolean!
+  deleteContent(id: Float!): Boolean!
+  deleteDetail(id: Float!): Boolean!
   removeView(id: Int!): View!
-  updateContent(data: UpdateContentInput!, id: String!): Content!
-  updateDetail(data: UpdateContentDetailInput!, id: String!): ContentDetail!
+  updateContent(data: UpdateContentInput!, id: Float!): Content!
+  updateDetail(data: UpdateContentDetailInput!, id: Float!): ContentDetail!
   updateView(updateViewInput: UpdateViewInput!): View!
 }
 
 type Query {
-  content(id: String!): Content!
-  contentDetail(id: String!): ContentDetail!
+  content(id: Float!): Content!
+  contentDetail(id: Float!): ContentDetail!
   contents: [Content!]!
   view(id: Int!): View!
   views: [View!]!
 }
 
 input UpdateContentDetailInput {
-  detailDescription: String!
+  detailDescription: String
+  id: ID!
 }
 
 input UpdateContentInput {
+  contentDetail: CreateContentDetailInput
+  contentDetailId: Float
   description: String
-  detail: CreateContentDetailInput
   name: String
   type: ContentType
 }

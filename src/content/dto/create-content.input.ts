@@ -6,7 +6,6 @@ import { ContentType } from "../enum/content-type.enum";
 @InputType()
 export class CreateContentInput {
 
-
     @IsString()
     @IsNotEmpty({ message: "Name field cannot be empty" })
     name: string;
@@ -21,9 +20,8 @@ export class CreateContentInput {
     type: ContentType;
 
     @Field(() => CreateContentDetailInput)
-    detail?: CreateContentDetailInput;
+    contentDetail?: CreateContentDetailInput;
 
-    @Field({ name: "detail_id" })
-    detailId?: string;
+    contentDetailId?: number;
 
 }

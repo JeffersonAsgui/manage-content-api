@@ -1,5 +1,4 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { ContentDetail } from './entities/content-detail.entity';
 import { ContentDetailService } from './content-detail.service';
 import { CreateContentDetailInput } from './dto/create-content-detail.input';
 import { UpdateContentDetailInput } from './dto/update-content-detail.input';
@@ -14,7 +13,7 @@ export class ContentDetailResolver {
 
     @Query(() => ContentDetailDTO)
     async contentDetail(
-        @Args('id') id: string
+        @Args('id') id: number
     ): Promise<ContentDetailDTO> {
         const detail = this.detailService.findDetailById(id);
         return detail;
@@ -30,7 +29,7 @@ export class ContentDetailResolver {
 
     @Mutation(() => ContentDetailDTO)
     async updateDetail(
-        @Args('id') id: string,
+        @Args('id') id: number,
         @Args('data') data: UpdateContentDetailInput,
     ): Promise<ContentDetailDTO> {
         const detail = this.detailService.updateDetail(id, data);
@@ -39,7 +38,7 @@ export class ContentDetailResolver {
 
     @Mutation(() => Boolean)
     async deleteDetail(
-        @Args('id') id: string
+        @Args('id') id: number
     ): Promise<boolean> {
         const deleted = await this.detailService.deleteDetail(id);
         return deleted;

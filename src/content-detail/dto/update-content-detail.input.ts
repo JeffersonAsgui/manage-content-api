@@ -1,11 +1,10 @@
-import { Field, InputType } from "@nestjs/graphql";
-import { IsEnum, IsNotEmpty, IsObject, IsOptional, IsString } from "class-validator";
+import { Field, ID, InputType, PartialType } from "@nestjs/graphql";
+import { CreateContentDetailInput } from "./create-content-detail.input";
 
 @InputType()
-export class UpdateContentDetailInput {
+export class UpdateContentDetailInput extends PartialType(CreateContentDetailInput) {
 
-    @IsString()
-    @IsNotEmpty({ message: "Detail field cannot be empty" })
-    detailDescription: string;
+    @Field(() => ID)
+    id: number;
 
 }

@@ -14,7 +14,7 @@ export class ContentDetailService {
         private contentDetailRepository: Repository<ContentDetail>,
     ) { }
 
-    async findDetailById(id: string): Promise<ContentDetailDTO> {
+    async findDetailById(id: number): Promise<ContentDetailDTO> {
         const detailContent = await this.contentDetailRepository.findOne(id);
         if (!detailContent) {
             throw new NotFoundException('Content Detail not found!');
@@ -35,7 +35,7 @@ export class ContentDetailService {
     }
 
 
-    async updateDetail(id: string, data: UpdateContentDetailInput): Promise<ContentDetailDTO> {
+    async updateDetail(id: number, data: UpdateContentDetailInput): Promise<ContentDetailDTO> {
         const detail = await this.findDetailById(id);
 
         await this.contentDetailRepository.update(detail, { ...data });
@@ -45,7 +45,7 @@ export class ContentDetailService {
 
     }
 
-    async deleteDetail(id: string): Promise<boolean> {
+    async deleteDetail(id: number): Promise<boolean> {
         const detail = await this.findDetailById(id);
         const deletedDetail = await this.contentDetailRepository.delete(detail);
         return deletedDetail ? true : false;

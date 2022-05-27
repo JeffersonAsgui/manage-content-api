@@ -4,7 +4,7 @@ import { Field, ID, ObjectType } from "@nestjs/graphql";
 export class ContentDetailDTO {
 
     @Field(() => ID)
-    id: string;
+    id: number;
 
     detailDescription: string;
 

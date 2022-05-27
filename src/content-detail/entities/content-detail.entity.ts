@@ -5,12 +5,12 @@ import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "ty
 export class ContentDetail {
 
     @PrimaryGeneratedColumn()
-    id: string;
+    id: number;
 
     @Column({ name: "description" })
     detailDescription: string;
 
-    @OneToOne(() => Content, content => content.detailId, { nullable: true })
+    @OneToOne(() => Content, content => content.contentDetail, { nullable: true })
     content?: Content;
 
 }
