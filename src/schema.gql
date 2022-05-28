@@ -32,6 +32,11 @@ input CreateContentInput {
   type: ContentType!
 }
 
+input CreateUserInput {
+  name: String!
+  type: UserType
+}
+
 input CreateViewInput {
   """Example field (placeholder)"""
   exampleField: Int!
@@ -40,12 +45,15 @@ input CreateViewInput {
 type Mutation {
   createContent(data: CreateContentInput!): Content!
   createDetail(data: CreateContentDetailInput!): ContentDetail!
+  createUser(createUserInput: CreateUserInput!): User!
   createView(createViewInput: CreateViewInput!): View!
   deleteContent(id: Float!): Boolean!
   deleteDetail(id: Float!): Boolean!
+  removeUser(id: Float!): Boolean!
   removeView(id: Int!): View!
   updateContent(data: UpdateContentInput!, id: Float!): Content!
   updateDetail(data: UpdateContentDetailInput!, id: Float!): ContentDetail!
+  updateUser(updateUserInput: UpdateUserInput!): User!
   updateView(updateViewInput: UpdateViewInput!): View!
 }
 
@@ -53,6 +61,8 @@ type Query {
   content(id: Float!): Content!
   contentDetail(id: Float!): ContentDetail!
   contents: [Content!]!
+  user(id: Int!): User!
+  users: [User!]!
   view(id: Int!): View!
   views: [View!]!
 }
@@ -70,10 +80,27 @@ input UpdateContentInput {
   type: ContentType
 }
 
+input UpdateUserInput {
+  id: Int!
+  name: String
+  type: UserType
+}
+
 input UpdateViewInput {
   """Example field (placeholder)"""
   exampleField: Int
   id: Int!
+}
+
+type User {
+  id: ID!
+  name: String!
+  type: String!
+}
+
+enum UserType {
+  ADMIN
+  STUDENTS
 }
 
 type View {

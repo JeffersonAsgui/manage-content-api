@@ -8,6 +8,7 @@ import { AppService } from './app.service';
 import { ContentModule } from './content/content.module';
 import { ContentDetailModule } from './content-detail/content-detail.module';
 import { ViewsModule } from './content-views/views.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ViewsModule } from './content-views/views.module';
     ContentModule,
     ContentDetailModule,
     ViewsModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
