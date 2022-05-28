@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { ContentDetail } from 'src/content-detail/entities/content-detail.entity';
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { UserType } from '../enum/user.enum';
 
 @Entity()
@@ -12,5 +13,9 @@ export class User {
 
   @Column({ nullable: false, type: 'varchar', length: 20, default: UserType.STUDENTS })
   type: string;
+
+  @ManyToMany(() => ContentDetail, (contentDetail) => contentDetail.users)
+  @JoinColumn()
+  contentDetails: ContentDetail[];
 
 }
