@@ -3,20 +3,31 @@ import { ContentService } from './content.service';
 import { CreateContentInput } from './dto/create-content.input';
 import { UpdateContentInput } from './dto/update-content.input';
 import { ContentDTO } from './dto/content.dto';
+import { UserType } from 'src/user/enum/user.enum';
+import { Roles } from 'src/auth/roles.decorator';
+import { UseGuards } from '@nestjs/common';
+import { GqlAuthGuard } from 'src/auth/jwt-auth.guard';
+import { RolesGuard } from 'src/auth/roles.guard';
 
+@UseGuards(GqlAuthGuard, RolesGuard)
 @Resolver(() => ContentDTO)
 export class ContentResolver {
     constructor(
         private contentService: ContentService,
     ) { }
 
+    //@UseGuards(GqlAuthGuard, RolesGuard)
 
+    //@UseGuards(RolesGuard)
+    @Roles(UserType.ADMIN, UserType.STUDENTS)
     @Query(() => [ContentDTO])
     async contents(): Promise<ContentDTO[]> {
         const contents = await this.contentService.findAllContent();
         return contents;
     }
 
+    // @UseGuards(RolesGuard)
+    @Roles(UserType.ADMIN)
     @Query(() => ContentDTO)
     async content(
         @Args('id') id: number
@@ -25,6 +36,8 @@ export class ContentResolver {
         return content;
     }
 
+    @UseGuards(RolesGuard)
+    @Roles(UserType.ADMIN)
     @Mutation(() => ContentDTO)
     async createContent(
         @Args('data') data: CreateContentInput,
@@ -33,6 +46,8 @@ export class ContentResolver {
         return content;
     }
 
+    @UseGuards(GqlAuthGuard, RolesGuard)
+    @Roles(UserType.ADMIN)
     @Mutation(() => ContentDTO)
     async updateContent(
         @Args('id') id: number,
@@ -42,6 +57,7 @@ export class ContentResolver {
         return content;
     }
 
+    @Roles(UserType.ADMIN)
     @Mutation(() => Boolean)
     async deleteContent(
         @Args('id') id: number

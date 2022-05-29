@@ -9,6 +9,9 @@ import { ContentModule } from './content/content.module';
 import { ContentDetailModule } from './content-detail/content-detail.module';
 import { ViewsModule } from './content-views/views.module';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { RolesGuard } from './auth/roles.guard';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -18,13 +21,17 @@ import { UserModule } from './user/user.module';
       debug: false,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
+      //context: ({req}) => ({req}),
     }),
     ContentModule,
     ContentDetailModule,
     ViewsModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+  ],
 })
 export class AppModule { }
