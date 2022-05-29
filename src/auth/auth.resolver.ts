@@ -7,9 +7,8 @@ import { AuthInput } from './dto/auth.input';
 export class AuthResolver {
   constructor(private readonly authService: AuthService) { }
 
-
   @Mutation(() => AuthDTO)
-  public async isUser(
+  public async getToken(
     @Args('data') data: AuthInput
   ): Promise<AuthDTO> {
     const response = await this.authService.validateUser(data);

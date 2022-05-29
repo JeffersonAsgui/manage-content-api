@@ -1,6 +1,6 @@
 import { Content } from "src/content/entities/content.entity";
 import { User } from "src/user/entities/user.entity";
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class ContentDetail {
@@ -17,6 +17,14 @@ export class ContentDetail {
     @ManyToMany(() => User, (user) => user.contentDetails)
     @JoinTable({
         name: "content_views",
+        joinColumn: {
+            name: "userId",
+            referencedColumnName: "id"
+        },
+        inverseJoinColumn: {
+            name: "contentDetailId",
+            referencedColumnName: "id"
+        }
     })
     users: User[];
 

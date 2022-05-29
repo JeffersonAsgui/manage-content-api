@@ -28,7 +28,7 @@ export class RolesGuard implements CanActivate {
 
     }
 
-    getRequest(context: ExecutionContext) {
+    private getRequest(context: ExecutionContext) {
         if (context.getType<ContextType | 'graphql'>() === 'graphql') {
             return GqlExecutionContext.create(context).getContext().req;
         }

@@ -20,6 +20,7 @@ type Content {
 }
 
 type ContentDetail {
+  detailDescription: String!
   id: ID!
 }
 
@@ -27,6 +28,11 @@ enum ContentType {
   IMAGE
   PDF
   VIDEO
+}
+
+type ContentViews {
+  contentDetailId: Float!
+  userId: Float!
 }
 
 input CreateContentDetailInput {
@@ -41,40 +47,36 @@ input CreateContentInput {
   type: ContentType!
 }
 
+input CreateContentViewsInput {
+  contentDetailId: Float!
+  userId: Float!
+}
+
 input CreateUserInput {
   name: String!
   type: UserType
 }
 
-input CreateViewInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
 type Mutation {
   createContent(data: CreateContentInput!): Content!
+  createContentView(createContentViewInput: CreateContentViewsInput!): ContentViews!
   createDetail(data: CreateContentDetailInput!): ContentDetail!
   createUser(createUserInput: CreateUserInput!): User!
-  createView(createViewInput: CreateViewInput!): View!
   deleteContent(id: Float!): Boolean!
   deleteDetail(id: Float!): Boolean!
-  isUser(data: AuthInput!): Auth!
+  getToken(data: AuthInput!): Auth!
   removeUser(id: Float!): Boolean!
-  removeView(id: Int!): View!
   updateContent(data: UpdateContentInput!, id: Float!): Content!
   updateDetail(data: UpdateContentDetailInput!, id: Float!): ContentDetail!
   updateUser(updateUserInput: UpdateUserInput!): User!
-  updateView(updateViewInput: UpdateViewInput!): View!
 }
 
 type Query {
   content(id: Float!): Content!
-  contentDetail(id: Float!): ContentDetail!
+  contentDetailById(id: Float!, userId: Float!): ContentDetail!
   contents: [Content!]!
   user(id: Int!): User!
   users: [User!]!
-  view(id: Int!): View!
-  views: [View!]!
 }
 
 input UpdateContentDetailInput {
@@ -96,12 +98,6 @@ input UpdateUserInput {
   type: UserType
 }
 
-input UpdateViewInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
-}
-
 type User {
   id: ID!
   name: String!
@@ -111,9 +107,4 @@ type User {
 enum UserType {
   ADMIN
   STUDENTS
-}
-
-type View {
-  """Example field (placeholder)"""
-  exampleField: Int!
 }

@@ -34,7 +34,6 @@ export class ContentDetailService {
         return detailSaved;
     }
 
-
     async updateDetail(id: number, data: UpdateContentDetailInput): Promise<ContentDetailDTO> {
         const detail = await this.findDetailById(id);
 

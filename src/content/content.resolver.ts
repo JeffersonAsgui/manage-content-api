@@ -16,9 +16,6 @@ export class ContentResolver {
         private contentService: ContentService,
     ) { }
 
-    //@UseGuards(GqlAuthGuard, RolesGuard)
-
-    //@UseGuards(RolesGuard)
     @Roles(UserType.ADMIN, UserType.STUDENTS)
     @Query(() => [ContentDTO])
     async contents(): Promise<ContentDTO[]> {
@@ -26,8 +23,8 @@ export class ContentResolver {
         return contents;
     }
 
-    // @UseGuards(RolesGuard)
-    @Roles(UserType.ADMIN)
+
+    @Roles(UserType.ADMIN, UserType.STUDENTS)
     @Query(() => ContentDTO)
     async content(
         @Args('id') id: number
@@ -36,7 +33,6 @@ export class ContentResolver {
         return content;
     }
 
-    @UseGuards(RolesGuard)
     @Roles(UserType.ADMIN)
     @Mutation(() => ContentDTO)
     async createContent(
@@ -46,7 +42,6 @@ export class ContentResolver {
         return content;
     }
 
-    @UseGuards(GqlAuthGuard, RolesGuard)
     @Roles(UserType.ADMIN)
     @Mutation(() => ContentDTO)
     async updateContent(

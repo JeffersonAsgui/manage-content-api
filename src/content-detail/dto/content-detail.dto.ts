@@ -7,6 +7,7 @@ export class ContentDetailDTO {
     @Field(() => ID)
     id: number;
 
+    @Field()
     detailDescription: string;
 
 }

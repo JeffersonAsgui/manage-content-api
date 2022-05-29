@@ -18,7 +18,6 @@ export class AuthService {
 
     async validateUser(data: AuthInput): Promise<AuthDTO> {
 
-        this.logger.log('validate User id : ' + data.id);
         const user = await this.userService.findById(data.id);
 
         if (!user) {

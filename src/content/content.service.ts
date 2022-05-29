@@ -1,6 +1,4 @@
 import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
-import { InjectConnection, InjectRepository } from '@nestjs/typeorm';
-import { Connection, Equal, In, Repository } from 'typeorm';
 import { Content } from './entities/content.entity';
 import { CreateContentInput } from './dto/create-content.input';
 import { UpdateContentInput } from './dto/update-content.input';
@@ -8,6 +6,8 @@ import { ContentDTO } from './dto/content.dto';
 import { ContentDetail } from 'src/content-detail/entities/content-detail.entity';
 import { ContentDetailService } from 'src/content-detail/content-detail.service';
 import { UpdateContentDetailInput } from 'src/content-detail/dto/update-content-detail.input';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class ContentService {
