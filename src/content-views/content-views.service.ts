@@ -25,4 +25,20 @@ export class ContentViewsService {
     return viewsSaved;
   }
 
+  async findSingleViewByContent(contentDetailId: number): Promise<Number> {
+
+    /*         const result = await this.contentViewsRepository.manager.query(
+                ' SELECT COUNT(cv."userId") AS count FROM public.content_views cv ' +
+                ' where cv."contentDetailId"  = '+detailId
+            )
+            const total1 = result[0].count || 0 */
+
+    const total = await this.viewsRepository.count({
+      where: {
+        contentDetailId: contentDetailId,
+      }
+    })
+    return total;
+  }
+
 }

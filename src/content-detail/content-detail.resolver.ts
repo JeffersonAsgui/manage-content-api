@@ -3,7 +3,7 @@ import { ContentDetailService } from './content-detail.service';
 import { CreateContentDetailInput } from './dto/create-content-detail.input';
 import { UpdateContentDetailInput } from './dto/update-content-detail.input';
 import { ContentDetailDTO } from './dto/content-detail.dto';
-import { NotFoundException, UseGuards } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from 'src/auth/jwt-auth.guard';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { Roles } from 'src/auth/roles.decorator';
@@ -34,9 +34,9 @@ export class ContentDetailResolver {
         const user = await this.userService.findById(userId);
 
         if (user?.type == UserType.STUDENTS) {
-            const idContenteDetail = (await detail).id;
+            const idContenteDetail = detail.id;
             const idUser = user.id
-            this.viewsService.createViews(new CreateContentViewsInput(idUser, idContenteDetail));
+            await this.viewsService.createViews(new CreateContentViewsInput(idUser, idContenteDetail));
         }
 
         return detail;

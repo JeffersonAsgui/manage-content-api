@@ -14,8 +14,4 @@ export class User {
   @Column({ nullable: false, type: 'varchar', length: 20, default: UserType.STUDENTS })
   type: string;
 
-  @ManyToMany(() => ContentDetail, (contentDetail) => contentDetail.users)
-  @JoinColumn()
-  contentDetails: ContentDetail[];
-
 }

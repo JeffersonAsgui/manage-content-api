@@ -75,6 +75,7 @@ type Query {
   content(id: Float!): Content!
   contentDetailById(id: Float!, userId: Float!): ContentDetail!
   contents: [Content!]!
+  countSingleViews(contentDetailId: Float!): Float!
   user(id: Int!): User!
   users: [User!]!
 }
