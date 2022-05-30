@@ -10,6 +10,7 @@ import { ContentDetailModule } from './content-detail/content-detail.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { ContentViewsModule } from './content-views/content-views.module';
+import { TesteresModule } from './testeres/testeres.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { ContentViewsModule } from './content-views/content-views.module';
     UserModule,
     AuthModule,
     ContentViewsModule,
+    TesteresModule,
   ],
   controllers: [AppController],
   providers: [
