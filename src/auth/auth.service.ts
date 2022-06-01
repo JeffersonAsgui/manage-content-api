@@ -27,7 +27,12 @@ export class AuthService {
 
         const token = await this.jwtToken(user);
 
-        return { user, token };
+        const authDTO: AuthDTO = {
+            user: user,
+            token: token,
+        }
+
+        return authDTO;
 
     }
 
