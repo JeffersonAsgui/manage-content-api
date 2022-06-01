@@ -12,6 +12,7 @@ import { UserType } from './enum/user.enum';
 @UseGuards(GqlAuthGuard, RolesGuard)
 @Resolver(() => UserDTO)
 export class UserResolver {
+
   constructor(
     private readonly userService: UserService
   ) { }

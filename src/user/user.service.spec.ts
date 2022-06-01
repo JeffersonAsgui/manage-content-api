@@ -7,11 +7,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
 import { User } from './entities/user.entity';
 import TestUtil from './common/TestUtil';
-import { UpdateUserInput } from './dto/update-user.input';
 import { Repository } from 'typeorm';
-import { CreateUserInput } from './dto/create-user.input';
-import { use } from 'passport';
-import { UserType } from './enum/user.enum';
 
 describe('UserService', () => {
     let service: UserService;
@@ -52,6 +48,7 @@ describe('UserService', () => {
 
     it('should be defined', () => {
         expect(service).toBeDefined();
+        expect(userRepository).toBeDefined();
     });
 
     describe('When search All Users', () => {
@@ -83,11 +80,11 @@ describe('UserService', () => {
 
     describe('When create user', () => {
         it('should create a user', async () => {
-            const user = TestUtil.giveMeAValidUser();
+            const user = TestUtil.giveMeAValidUserStudant();
             mockRepository.save.mockReturnValue(user);
             mockRepository.create.mockReturnValue(user);
 
-            const userInput = TestUtil.giveMeAInputUser();
+            const userInput = TestUtil.giveMeAInputUserForCreate();
             const savedUser = await service.create(userInput);
             expect(savedUser).toMatchObject(user);
             expect(mockRepository.create).toBeCalledTimes(1);
