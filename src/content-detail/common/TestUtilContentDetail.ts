@@ -1,7 +1,6 @@
 import { ContentDetailDTO } from "src/content-detail/dto/content-detail.dto";
 import { ContentDetail } from "src/content-detail/entities/content-detail.entity";
 import { ContentViewsDTO } from "src/content-views/dto/content-views.dto";
-import { ContentType } from "src/content/enum/content-type.enum";
 import { UserDTO } from "src/user/dto/user.dto";
 import { UserType } from "src/user/enum/user.enum";
 import { CreateContentDetailInput } from "../dto/create-content-detail.input";
