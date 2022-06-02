@@ -1,9 +1,9 @@
 import { NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
-import { AuthResolver } from './auth.resolver';
-import { AuthService } from './auth.service';
-import TestUtil from './common/TestUtilAuth';
+import { AuthResolver } from '../auth.resolver';
+import { AuthService } from '../auth.service';
+import TestUtil from '../common/TestUtilAuth';
 
 describe('AuthResolver', () => {
     let authResolver: AuthResolver;

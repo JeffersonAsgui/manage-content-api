@@ -3,9 +3,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ContentViewsService } from 'src/content-views/content-views.service';
 import { UserType } from 'src/user/enum/user.enum';
 import { UserService } from 'src/user/user.service';
-import TestUtil from './common/TestUtilContentDetail';
-import { ContentDetailResolver } from './content-detail.resolver';
-import { ContentDetailService } from './content-detail.service';
+import TestUtil from '../common/TestUtilContentDetail';
+import { ContentDetailResolver } from '../content-detail.resolver';
+import { ContentDetailService } from '../content-detail.service';
 
 describe('ContentResolver', () => {
     let contentResolver: ContentDetailResolver;

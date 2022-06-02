@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ContentViewsService } from 'src/content-views/content-views.service';
-import TestUtil from './common/TestUtilContentViews';
-import { ContentViewsResolver } from './content-views.resolver';
+import TestUtil from '../common/TestUtilContentViews';
+import { ContentViewsResolver } from '../content-views.resolver';
 
 describe('ViewsResolver', () => {
     let viewsResolver: ContentViewsResolver;

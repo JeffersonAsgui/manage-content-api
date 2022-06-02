@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AuthService } from './auth.service';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from 'src/user/user.service';
 import { NotFoundException } from '@nestjs/common';
-import TestUtil from './common/TestUtilAuth';
+import { AuthService } from '../auth.service';
+import TestUtil from '../common/TestUtilAuth';
 
 describe('UserService', () => {
     let authService: AuthService;

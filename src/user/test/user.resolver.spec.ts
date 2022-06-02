@@ -1,8 +1,8 @@
 import { NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import TestUtil from './common/TestUtil';
-import { UserResolver } from './user.resolver';
-import { UserService } from './user.service';
+import TestUtil from '../common/TestUtil';
+import { UserResolver } from '../user.resolver';
+import { UserService } from '../user.service';
 
 describe('UserResolver', () => {
     let userResolver: UserResolver;

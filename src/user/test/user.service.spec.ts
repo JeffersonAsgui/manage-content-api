@@ -4,9 +4,9 @@ import {
 } from '@nestjs/common';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Test, TestingModule } from '@nestjs/testing';
-import { UserService } from './user.service';
-import { User } from './entities/user.entity';
-import TestUtil from './common/TestUtil';
+import { UserService } from '../user.service';
+import { User } from '../entities/user.entity';
+import TestUtil from '../common/TestUtil';
 import { Repository } from 'typeorm';
 
 describe('UserService', () => {

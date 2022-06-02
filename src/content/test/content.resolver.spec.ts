@@ -1,8 +1,8 @@
 import { NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import TestUtil from './common/TestUtilContent';
-import { ContentResolver } from './content.resolver';
-import { ContentService } from './content.service';
+import TestUtil from '../common/TestUtilContent';
+import { ContentResolver } from '../content.resolver';
+import { ContentService } from '../content.service';
 
 describe('ContentResolver', () => {
     let contentResolver: ContentResolver;

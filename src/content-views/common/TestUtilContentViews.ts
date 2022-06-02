@@ -13,20 +13,6 @@ export default class TestUtil {
         return inputContent;
     }
 
-    /* static giveMeAUpdateContentDetailInput(): UpdateContentDetailInput {
-         const content = new UpdateContentDetailInput();
-         content.id = 1
-         content.detailDescription = 'Description Update'
-         return content;
-     } */
-
-    static giveMeAContentDetail(): ContentDetail {
-        const content = new ContentDetail();
-        content.id = 1;
-        content.detailDescription = 'Description'
-        return content;
-    }
-
     static giveMeAContentViewsDTO(): ContentViewsDTO {
         const content = new ContentViewsDTO();
         content.contentDetailId = 1

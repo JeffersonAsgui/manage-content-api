@@ -24,13 +24,6 @@ export default class TestUtil {
         return content;
     }
 
-    static giveMeAContentDetail(): ContentDetail {
-        const content = new ContentDetail();
-        content.id = 1;
-        content.detailDescription = 'Description'
-        return content;
-    }
-
     static giveMeAContentDetailDTO(): ContentDetailDTO {
         const content = new ContentDetailDTO();
         content.id = 1;

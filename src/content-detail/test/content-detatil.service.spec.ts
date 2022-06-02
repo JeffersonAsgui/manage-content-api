@@ -6,8 +6,8 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { Test, TestingModule } from '@nestjs/testing';
 import { Repository } from 'typeorm';
 import { ContentDetailService } from 'src/content-detail/content-detail.service';
-import { ContentDetail } from './entities/content-detail.entity';
-import TestUtil from './common/TestUtilContentDetail';
+import { ContentDetail } from '../entities/content-detail.entity';
+import TestUtil from '../common/TestUtilContentDetail';
 
 describe('ContentDetatilService', () => {
     let service: ContentDetailService;

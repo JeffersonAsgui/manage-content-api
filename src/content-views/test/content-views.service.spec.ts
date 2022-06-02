@@ -1,10 +1,10 @@
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Test, TestingModule } from '@nestjs/testing';
 import { Repository } from 'typeorm';
-import { ContentViewsService } from './content-views.service';
-import { ContentViews } from './entities/content-views.entity';
-import TestUtil from './common/TestUtilContentViews';
 import { InternalServerErrorException } from '@nestjs/common';
+import { ContentViewsService } from '../content-views.service';
+import { ContentViews } from '../entities/content-views.entity';
+import TestUtil from '../common/TestUtilContentViews';
 
 describe('ContentViewsService', () => {
     let service: ContentViewsService;
