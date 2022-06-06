@@ -1,5 +1,5 @@
 import { Content } from "src/content/entities/content.entity";
-import { Column, Entity, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class ContentDetail {
